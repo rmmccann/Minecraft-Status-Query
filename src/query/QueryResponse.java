@@ -69,7 +69,7 @@ public class QueryResponse
 	public String asJSON()
 	{
 		StringBuilder json = new StringBuilder();
-		json.append('{');
+		json.append("\'{");
 			json.append("\"motd\":");							// "motd":
 			json.append('"').append(motd).append("\",");		// "A Minecraft Server",
 			
@@ -113,7 +113,7 @@ public class QueryResponse
 				json.append(']');
 			}
 			
-		json.append('}');
+		json.append("}\'");
 		
 		return json.toString();
 	}
@@ -142,6 +142,13 @@ public class QueryResponse
 			str.append(gameID);
 			str.append(delimiter);
 			str.append(version);
+			
+			//plugins for non-vanilla (eg. Bukkit) servers
+			if(plugins.length() > 0)
+			{
+				str.append(delimiter);
+				str.append(plugins);
+			}
 			
 			// player list
 			str.append(delimiter);

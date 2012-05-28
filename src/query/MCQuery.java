@@ -114,7 +114,7 @@ public class MCQuery
 			socket.send(packet1);
 			
 			//receive a response in a new packet
-			byte[] out = new byte[256]; //TODO guess at size : 244-256 bytes. !!need to account for more player names!!
+			byte[] out = new byte[1024]; //TODO guess at max size
 			DatagramPacket packet = new DatagramPacket(out, out.length);
 			socket.setSoTimeout(500); //one half second timeout
 			socket.receive(packet);
