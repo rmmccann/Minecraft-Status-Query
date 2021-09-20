@@ -33,10 +33,10 @@ public class QueryRequest
 		
 		try
 		{
-			dataStream.write(MAGIC);
-			dataStream.write(type);
-			dataStream.writeInt(sessionID);
-			dataStream.write(payloadBytes());
+			dataStream.write(MAGIC);          // byte 0,1
+			dataStream.write(type);           // byte 2
+			dataStream.writeInt(sessionID);   // byte 3,4,5,6
+			dataStream.write(payloadBytes()); // byte 7+
 		}
 		catch (IOException e)
 		{

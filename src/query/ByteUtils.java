@@ -34,8 +34,8 @@ public class ByteUtils
 	
 	/**
 	 * Functions similarly to the standard java <code>String.trim()</code> method (except that null bytes (0x00),
-	 * instead of whitespace, are stripped from the beginning and end). If the input array alread has no leading/trailing null bytes,
-	 * is returned unmodified.
+	 * instead of whitespace, are stripped from the beginning and end).
+	 * If the input array already has no leading/trailing null bytes, it is returned unmodified.
 	 * 
 	 * @param arr the input array
 	 * @return an array without any leading or trailing null bytes
@@ -64,7 +64,7 @@ public class ByteUtils
 	}
 	
 	/**
-	 * Spits the input array into separate byte arrays. Works similarly to <code>String.split()</code>, but always splits on a null byte (0x00).
+	 * Splits the input array into separate byte arrays. Works similarly to <code>String.split()</code>, but always splits on a null byte (0x00).
 	 * @param input the input array
 	 * @return a new array of byte arrays
 	 */
@@ -108,10 +108,10 @@ public class ByteUtils
 	}
 	
 	/**
-	 * Creates an new array of length <code>arr+amount</code>, identical to the original, <code>arr</code>,
+	 * Creates a new array of length <code>arr+amount</code>, identical to the original, <code>arr</code>,
 	 * except with <code>amount</code> null bytes (0x00) padding the end.
 	 * @param arr the input array
-	 * @param amount the amount of byte to pad
+	 * @param amount the amount of bytes to pad
 	 * @return a new array, identical to the original, with the desired padding
 	 */
 	public static byte[] padArrayEnd(byte[] arr, int amount)
@@ -133,7 +133,9 @@ public class ByteUtils
 		return buf.getShort();
 	}
 	
-	//Big endian !!
+	/**
+	 * Converts an int to a byte array (big-endian)
+	 */
 	public static byte[] intToBytes(int in)
 	{
 		byte[] b;
@@ -147,9 +149,12 @@ public class ByteUtils
 		return b;
 	}
 	
+	/**
+	 * Converts the first four bytes of a byte array to an int (big-endian)
+	 */
 	public static int bytesToInt(byte[] in)
 	{
-		return ByteBuffer.wrap(in).getInt(); //note: big-endian by default
+		return ByteBuffer.wrap(in).getInt();
 	}
 	
 }
